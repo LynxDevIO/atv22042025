@@ -1,4 +1,4 @@
-package puc.poobd.atv22042025;
+package puc.poobd.atv22042025.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

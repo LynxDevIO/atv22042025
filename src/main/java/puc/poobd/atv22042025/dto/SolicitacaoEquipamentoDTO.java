@@ -1,4 +1,7 @@
-package puc.poobd.atv22042025;
+package puc.poobd.atv22042025.dto;
+
+import puc.poobd.atv22042025.model.SolicitacaoEquipamento;
+import puc.poobd.atv22042025.db.BancoDados;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,10 +23,10 @@ public class SolicitacaoEquipamentoDTO {
      */
     public void criar() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS solicitacao (" +
-                "id INTEGER PRIMARY AUTOINCREMENT, " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "nome_colaborador TEXT, " +
                 "equipamento TEXT, " +
-                "data_solicitacao TEXT";
+                "data_solicitacao TEXT)";
         Statement st = connection.createStatement();
         st.executeUpdate(sql);
     }
@@ -33,7 +36,7 @@ public class SolicitacaoEquipamentoDTO {
      * @param se
      */
     public void inserir(SolicitacaoEquipamento se) throws SQLException {
-        String sql = "INSERT INTO criar (nome_colaborador, equipamento, data_solicitacao) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO solicitacao (nome_colaborador, equipamento, data_solicitacao) VALUES (?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, se.getNomeColaborador());
             ps.setString(2, se.getEquipamento());
@@ -44,6 +47,11 @@ public class SolicitacaoEquipamentoDTO {
         }
     }
 
+    /**
+     * Lista os SolicitacaoEquipamento
+     * @return
+     * @throws SQLException
+     */
     public List<SolicitacaoEquipamentoDTO> listar() throws SQLException {
         List<SolicitacaoEquipamentoDTO> l = new ArrayList<>();
         String sql = "SELECT * FROM SOLICITACAO";

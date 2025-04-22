@@ -1,4 +1,4 @@
-package puc.poobd.atv22042025;
+package puc.poobd.atv22042025.model;
 
 public class SolicitacaoEquipamento {
     private Long id;
@@ -36,5 +36,14 @@ public class SolicitacaoEquipamento {
 
     public void setDataSolicitacao(String dataSolicitacao) {
         this.dataSolicitacao = dataSolicitacao;
+    }
+
+    @Override
+    public String toString() {
+        return "SolicitacaoEquipamento{" +
+                "nomeColaborador='" + nomeColaborador + '\'' +
+                ", equipamento='" + equipamento + '\'' +
+                ", dataSolicitacao='" + dataSolicitacao + '\'' +
+                '}';
     }
 }
